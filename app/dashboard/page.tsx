@@ -108,7 +108,7 @@ export default function Dashboard() {
     // Video recording
     if (recordVideo) {
       try {
-        const displayStream = await navigator.mediaDevices.getDisplayMedia({ video: true, audio: true });
+        const displayStream = await navigator.mediaDevices.getDisplayMedia({ video: { frameRate: 30 }, audio: { echoCancellation: false, noiseSuppression: false, sampleRate: 44100 } });
         const recorder = new MediaRecorder(displayStream, { mimeType: 'video/webm;codecs=vp9' });
         recorder.ondataavailable = (e) => { if (e.data.size > 0) videoChunksRef.current.push(e.data); };
         recorder.onstop = () => {
