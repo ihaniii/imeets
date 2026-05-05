@@ -50,11 +50,11 @@ export default function Login() {
       } else if (mode === 'login') {
         const { data, error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) setError('Invalid email or password');
-        else setUser(data.user);
+        else window.location.href = '/dashboard';
       } else {
         const { error } = await supabase.auth.signUp({ email, password, options: { data: { name } } });
         if (error) setError(error.message);
-        else setSuccess('Account created! Check your email ✅');
+        else window.location.href = '/dashboard';
       }
     } catch(e) { setError('Something went wrong'); }
     setLoading(false);
