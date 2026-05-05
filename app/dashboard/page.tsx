@@ -112,11 +112,11 @@ export default function Dashboard() {
         const recorder = new MediaRecorder(displayStream, { mimeType: 'video/webm;codecs=vp9' });
         recorder.ondataavailable = (e) => { if (e.data.size > 0) videoChunksRef.current.push(e.data); };
         recorder.onstop = () => {
-          const blob = new Blob(videoChunksRef.current, { type: 'video/webm' });
+          const mType = videoChunksRef.current[0]?.type || 'video/webm'; const blob = new Blob(videoChunksRef.current, { type: mType });
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a');
           a.href = url;
-          a.download = `${videoTitleRef.current || 'meeting'}-${new Date().toISOString().slice(0,10)}.webm`;
+          const ext = mType.includes('mp4') ? 'mp4' : 'webm'; a.download = `${videoTitleRef.current || 'meeting'}-${new Date().toISOString().slice(0,10)}.${ext}`;
           document.body.appendChild(a); a.click();
           document.body.removeChild(a); URL.revokeObjectURL(url);
           setVideoReady(true);
