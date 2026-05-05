@@ -267,8 +267,8 @@ export default function Home() {
               </button>
             ))}
           </div>
-          <a href="/login" style={{ padding: '9px 20px', borderRadius: 10, border: '1.5px solid #E2E8F5', background: '#fff', color: '#3D5080', fontWeight: 600, fontSize: 13.5 }}>{t.nav.login}</a>
-          <a href="/login" className="nav-cta" style={{ padding: '9px 22px', borderRadius: 10, background: 'linear-gradient(135deg,#4361EE,#7B2FBE)', color: '#fff', fontWeight: 700, fontSize: 13.5, boxShadow: '0 4px 16px rgba(67,97,238,.3)', transition: 'all .2s' }}>{t.nav.cta}</a>
+          <a href="https://app.imeets.co/login" style={{ padding: '9px 20px', borderRadius: 10, border: '1.5px solid #E2E8F5', background: '#fff', color: '#3D5080', fontWeight: 600, fontSize: 13.5 }}>{t.nav.login}</a>
+          <a href="https://app.imeets.co/login" className="nav-cta" style={{ padding: '9px 22px', borderRadius: 10, background: 'linear-gradient(135deg,#4361EE,#7B2FBE)', color: '#fff', fontWeight: 700, fontSize: 13.5, boxShadow: '0 4px 16px rgba(67,97,238,.3)', transition: 'all .2s' }}>{t.nav.cta}</a>
         </div>
       </nav>
 
@@ -500,7 +500,7 @@ export default function Home() {
                   {p.period && <span style={{ fontSize: 14, color: p.highlight ? 'rgba(255,255,255,.65)' : '#9AAAC8' }}>{p.period}</span>}
                 </div>
                 <p style={{ fontSize: 13, color: p.highlight ? 'rgba(255,255,255,.65)' : '#9AAAC8', marginBottom: 24 }}>{p.desc}</p>
-                <a href="/login" style={{ display: 'block', width: '100%', padding: '12px', borderRadius: 12, border: p.highlight ? '1.5px solid rgba(255,255,255,.3)' : `1.5px solid ${p.color}`, background: p.highlight ? 'rgba(255,255,255,.15)' : 'transparent', color: p.highlight ? '#fff' : p.color, fontWeight: 700, fontSize: 14, textAlign: 'center', marginBottom: 24, backdropFilter: p.highlight ? 'blur(8px)' : 'none', transition: 'all .2s' }}>{p.cta}</a>
+                <a href="https://app.imeets.co/login" style={{ display: 'block', width: '100%', padding: '12px', borderRadius: 12, border: p.highlight ? '1.5px solid rgba(255,255,255,.3)' : `1.5px solid ${p.color}`, background: p.highlight ? 'rgba(255,255,255,.15)' : 'transparent', color: p.highlight ? '#fff' : p.color, fontWeight: 700, fontSize: 14, textAlign: 'center', marginBottom: 24, backdropFilter: p.highlight ? 'blur(8px)' : 'none', transition: 'all .2s' }}>{p.cta}</a>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                   {p.features.map((f: string, j: number) => (
                     <div key={j} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -539,7 +539,7 @@ export default function Home() {
           <div style={{ display: 'inline-block', marginBottom: 24, animation: 'float 3.5s ease-in-out infinite' }}><Logo size={80} /></div>
           <h2 style={{ fontSize: 'clamp(28px,5vw,56px)', fontWeight: 800, color: '#fff', letterSpacing: '-1.5px', lineHeight: 1.1, marginBottom: 20, whiteSpace: 'pre-line' }}>{t.cta.title}</h2>
           <p style={{ fontSize: 17, color: 'rgba(255,255,255,.78)', lineHeight: 1.8, marginBottom: 40, whiteSpace: 'pre-line' }}>{t.cta.sub}</p>
-          <a href="/login" style={{ display: 'inline-block', padding: '18px 48px', borderRadius: 16, background: '#fff', color: '#4361EE', fontWeight: 800, fontSize: 17, boxShadow: '0 12px 40px rgba(0,0,0,.2)', transition: 'all .2s', letterSpacing: '-.3px' }}>
+          <a href="https://app.imeets.co/login" style={{ display: 'inline-block', padding: '18px 48px', borderRadius: 16, background: '#fff', color: '#4361EE', fontWeight: 800, fontSize: 17, boxShadow: '0 12px 40px rgba(0,0,0,.2)', transition: 'all .2s', letterSpacing: '-.3px' }}>
             {t.cta.btn}
           </a>
         </div>
