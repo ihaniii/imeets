@@ -10,7 +10,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<any>(null);
 
   const submit = async () => {
     setError(''); setSuccess(''); setLoading(true);
