@@ -432,7 +432,8 @@ export default function Dashboard() {
 
         {!isIdle&&<div style={{padding:'10px 24px',borderTop:'1px solid #EEF2FF',display:'flex',alignItems:'center',gap:9,background:'#fff',flexShrink:0}}>
           {isRec&&<button className="hbtn" onClick={stopRec} style={{padding:'8px 18px',borderRadius:9,border:'1.5px solid #FECDD3',background:'#FFF0F2',color:'#EF4444',cursor:'pointer',fontSize:12.5,fontWeight:600,fontFamily:'inherit',transition:'all .18s'}}>⬛ إيقاف وتحليل</button>}
-          {isDone&&<button className="hbtn" onClick={startRec} style={{padding:'8px 18px',borderRadius:9,border:'none',background:'linear-gradient(135deg,#4361EE,#7B2FBE)',color:'#fff',cursor:'pointer',fontSize:12.5,fontWeight:700,fontFamily:'inherit',boxShadow:'0 3px 12px rgba(67,97,238,.3)',transition:'all .18s'}}>+ تسجيل جديد</button>}
+          <button className="hbtn" onClick={async()=>{await fetch("/api/send-summary",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({to:user?.email,name:userName,title:sel?.title||"اجتماع",summary})});alert("تم إرسال الملخص لبريدك ✅");}} style={{padding:"9px 18px",borderRadius:10,border:"none",background:"linear-gradient(135deg,#059669,#047857)",color:"#fff",cursor:"pointer",fontSize:12,fontWeight:700,fontFamily:"inherit",transition:"all .18s"}}>📧 إرسال للبريد</button>
+            {isDone&&<button className="hbtn" onClick={startRec} style={{padding:'8px 18px',borderRadius:9,border:'none',background:'linear-gradient(135deg,#4361EE,#7B2FBE)',color:'#fff',cursor:'pointer',fontSize:12.5,fontWeight:700,fontFamily:'inherit',boxShadow:'0 3px 12px rgba(67,97,238,.3)',transition:'all .18s'}}>+ تسجيل جديد</button>}
         </div>}
       </div>
     </div>
