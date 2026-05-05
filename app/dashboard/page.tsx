@@ -108,7 +108,18 @@ export default function Dashboard() {
     // Video recording
     if (recordVideo) {
       try {
-        const displayStream = await navigator.mediaDevices.getDisplayMedia({ video: { frameRate: 30 }, audio: { echoCancellation: false, noiseSuppression: false, sampleRate: 44100 } });
+        const displayStream = await navigator.mediaDevices.getDisplayMedia({ video: { frameRate: 30 }, audio: true });
+        const micStream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
+        const audioCtx = new AudioContext();
+        const dest = audioCtx.createMediaStreamDestination();
+        const displayAudio = displayStream.getAudioTracks();
+        if (displayAudio.length > 0) {
+          const displaySource = audioCtx.createMediaStreamSource(new MediaStream(displayAudio));
+          displaySource.connect(dest);
+        }
+        const micSource = audioCtx.createMediaStreamSource(micStream);
+        micSource.connect(dest);
+        const combinedStream = new MediaStream([...displayStream.getVideoTracks(), ...dest.stream.getTracks()]);
         const recorder = new MediaRecorder(displayStream, { mimeType: 'video/webm;codecs=vp9' });
         recorder.ondataavailable = (e) => { if (e.data.size > 0) videoChunksRef.current.push(e.data); };
         recorder.onstop = () => {
@@ -123,7 +134,7 @@ export default function Dashboard() {
         };
         recorder.start(1000);
         setVideoRecorder(recorder);
-        displayStream.getVideoTracks()[0].onended = () => recorder.stop();
+        displayStream.getVideoTracks()[0].onended = () => { recorder.stop(); micStream.getTracks().forEach(t => t.stop()); };
       } catch(e) { console.log('Video capture cancelled'); }
     }
 
